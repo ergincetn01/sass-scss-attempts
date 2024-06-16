@@ -1,56 +1,37 @@
 import React, { useEffect, useState } from "react"
 import "./styles.scss"
+import { TextInput } from "../../components/TextInput"
+import { NumberInput } from "../../components/NumberInput"
 
 export default function Home() {
-	const [name, setName] = useState<string>()
+	const [name, setName] = useState<string>("")
+	const [age, setAge] = useState<string>("")
 
 	useEffect(() => {
-		console.log("name", name)
-	}, [name])
+		console.log("name", name, "age", age)
+	}, [name, age])
 
-	const handleName = (e: any) => {
+	const handleName = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setName(e.target.value)
+	}
+
+	const handleAge = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setAge(e.target.value)
 	}
 
 	return (
 		<div className="App">
 			<div className="inner">
 				<form>
-					<input
-						placeholder="isim"
-						className="name-input"
-						value={name}
+					<TextInput
+						placeholder="Name"
 						onChange={handleName}
+						value={name}
 					/>
-					<input
-						placeholder="isim"
-						className="name-input"
-						value={name}
-						onChange={handleName}
-					/>
-					<input
-						placeholder="isim"
-						className="name-input"
-						value={name}
-						onChange={handleName}
-					/>
-					<input
-						placeholder="isim"
-						className="name-input"
-						value={name}
-						onChange={handleName}
-					/>
-					<input
-						placeholder="isim"
-						className="name-input"
-						value={name}
-						onChange={handleName}
-					/>
-					<input
-						placeholder="isim"
-						className="name-input"
-						value={name}
-						onChange={handleName}
+					<NumberInput
+						placeholder="Age"
+						value={age}
+						onChange={handleAge}
 					/>
 				</form>
 			</div>
