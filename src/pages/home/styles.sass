@@ -1,0 +1,77 @@
+$orange: orange
+
+$bg: ("main": #fff, "mid": #000)
+
+@mixin size($w, $h, $bg)
+	width: $w
+	height: $h
+	background-color: $bg
+
+@mixin ellipsis
+	text-overflow: ellipsis
+	overflow: hidden
+	white-space: nowrap
+
+@mixin border($b, $r)
+	border-radius: $r
+	border: $b
+
+@function getTheme($theme)
+	@if ($theme=='light')
+		@return #fff
+	@else if($theme=='dark')
+		@return #000
+	@else
+		@return gray
+
+@mixin shape($size, $isRound)
+	width: $size
+	height: $size
+	@if ($isRound)
+		border-radius: $size/2
+.App
+	background-color: getTheme('dark')
+	width: calc(100% - 20px)
+	height: calc(100vh - 20px)
+	display: flex
+	justify-content: center
+	align-items: center
+	padding: 10px
+
+.inner
+	border-radius: 12px
+	border: 2px solid black
+	background-color: map-get($bg,'main' )
+	display: flex
+	width: 100%
+	height: 100%
+	align-items: center
+	justify-content: center
+
+	h1
+		color: green
+		@include ellipsis
+
+	h1:hover
+		color: black
+
+	.box
+		@include size(100px, 20px, red)
+		@include border(2px solid black, 10px)
+
+	.box2
+		@include size(100px, 100px, blue)
+		@include border(null,10px)
+
+	form
+		border: 2px solid gray
+		border-radius: 15px
+		display: flex
+		background-color: map-get($bg,'main' )
+		flex-direction: column
+		gap: 10px
+		padding: 10px
+
+	.btn
+		@include shape(50px, true)
+		background-color: red

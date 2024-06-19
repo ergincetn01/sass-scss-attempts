@@ -1,0 +1,17 @@
+.text-input {
+  width: calc(50vw - 30px);
+  height: 5vh;
+  border: 0.7px solid gray;
+  border-radius: 12px;
+  padding-left: 10px;
+}
+
+.text-input::-moz-placeholder {
+  font-size: 12px;
+  color: blue;
+}
+
+.text-input::placeholder {
+  font-size: 12px;
+  color: blue;
+}/*# sourceMappingURL=styles.css.map */
